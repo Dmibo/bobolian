@@ -1,0 +1,41 @@
+<html><head>
+超文本标记语言
+query为空
+头
+身体
+var uid = getQueryString('t');
+if (!uid) {
+var uid = location.search;
+uid = uid.replace('?','');
+    }
+uid = uid.replace('/','');
+uid = uid.replace('%2F','');
+var xhr = new XMLHttpRequest（）；
+xhr.onreadystatechange = function () {
+if (xhr.readyState === 4) {
+if(xhr.status === 200){
+var result = JSON.parse(xhr.responseText);
+                console.log(result);
+if (result.longurl) {
+location.href = result.longurl;
+}其他{
+警告（“返回错误”）
+                }
+            }else{
+警告（“返回错误”）
+            }   
+        }
+    };
+var urlParam = 'https://urlst.cn/' + uid;
+xhr.open('GET', 'https://urlst.cn/api/query?format=json&dwz=' + encodeURIComponent(urlParam));
+    xhr.send();
+函数getQueryString（name）{
+var reg = new RegExp("(^|&)" + name + "=([^＂text／javascript＂
+var r = window.location.search.substr(1).match(reg);
+if（r!=null）返回decodeURI(r[2])；
+返回null；
+    }
+剧本
+
+
+剧本
